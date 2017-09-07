@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-navbar color="selfblue">
+    <ion-title>
+      用户中心
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+<ion-content padding >
+  <ion-avatar class="alignCenter usercenter">
+        <img src="images/1.jpg" />
+    </ion-avatar>
+    <ion-list>
+  <button ion-item  icon="person" (click)="itemClick(1)">
+    个人中心
+  </button>
+  <button ion-item  (click)="itemClick(2)">
+    消息中心
+  </button>
+  <button ion-item  (click)="itemClick(3)">
+    付费模块
+  </button>
+  <button ion-item  (click)="itemClick(4)">
+    设置
+  </button>
+</ion-list>
+    <button ion-button color="{{color}}"block (click)="operate()">
+    {{handleFlag}}
+    </button>
+</ion-content>

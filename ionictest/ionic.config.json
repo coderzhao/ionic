@@ -1,0 +1,10 @@
+{
+  "name": "ionictest",
+  "app_id": "",
+  "v2": true,
+  "typescript": true,
+  "proxies": [{
+    "path": "/browser",
+    "proxyUrl": "http://192.168.56.1:8080"
+  }]
+}

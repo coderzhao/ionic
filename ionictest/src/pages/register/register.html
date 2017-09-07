@@ -1,0 +1,30 @@
+<ion-header>
+	<ion-toolbar>
+		<ion-title mode="ios">
+		 注册页面
+		</ion-title>
+		<ion-buttons start>
+			<button ion-button color="primary" (click)="goBack()">返回</button>
+		</ion-buttons>
+	</ion-toolbar>
+</ion-header>
+<ion-content>
+	<ion-list>
+		<ion-item>
+			<ion-label floating >用户名</ion-label>
+			<ion-input type="text" [(ngModel)]="userInfo.username" clearInput></ion-input>
+		</ion-item>
+		<ion-item>
+			<ion-label floating >邮箱</ion-label>
+			<ion-input type="text" [(ngModel)]="userInfo.email" clearInput></ion-input>
+		</ion-item>
+		<ion-item>
+			<ion-label floating >密码</ion-label>
+			<ion-input type="password" [(ngModel)]="userInfo.password" clearInput></ion-input>
+		</ion-item>
+		<ion-item>
+			<ion-label floating >确认密码</ion-label>
+			<ion-input type="password" [(ngModel)]="userInfo.againPassword" clearInput></ion-input>
+		</ion-item>
+	</ion-list>
+	<button ion-button block (click)="checkUserName()">注册</button>

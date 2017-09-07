@@ -1,0 +1,25 @@
+<ion-header>
+  <!--<ion-toolbar color="primary">-->
+  <ion-navbar color="selfblue">
+    <ion-title>
+      图库管理
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding text-center>
+  <img [src]="picturePath" width="100%">
+  <div padding-top>
+    <button ion-button block color="light" (click)="getPicture(0)">从相册选一张</button>
+  </div>
+  <div padding-top>
+    <button ion-button block color="light" (click)="getPicture(1)">拍一张照片</button>
+  </div>
+  <ion-item>
+    <ion-label padding-top text-left>URL</ion-label>
+    <ion-input type="text" [(ngModel)]="picture.Url" clearInput></ion-input>
+  </ion-item>
+  <div padding-top>
+    <button type="button" ion-button block (click)="submitPicture()">提 交</button>
+  </div>
+</ion-content>
