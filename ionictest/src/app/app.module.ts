@@ -12,6 +12,7 @@ import { DetailPage } from '../pages/detail/detail';
 import { FunctionPage } from '../pages/function/function';
 import { VerifyPage } from '../pages/function/verify';
 import { GalleryPage } from '../pages/function/gallery';
+import { SearchPage } from '../pages/function/search';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import {NativeService} from '../providers/NativeService';
@@ -30,7 +31,8 @@ import {HttpModule} from "@angular/http";
     DetailPage,
     FunctionPage,
     VerifyPage,
-    GalleryPage
+    GalleryPage,
+    SearchPage
   ],
   imports: [
     BrowserModule,
@@ -49,7 +51,8 @@ import {HttpModule} from "@angular/http";
     DetailPage,
     FunctionPage,
     VerifyPage,
-    GalleryPage
+    GalleryPage,
+    SearchPage
   ],
   providers: [
     StatusBar,

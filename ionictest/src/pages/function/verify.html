@@ -19,6 +19,9 @@
   <ion-label  text-left>检测结果 :</ion-label>
   <ion-input type="text"  clearInput id="result"></ion-input>
   </ion-item>
+  <ion-item>
+  <ion-label  text-left>第一张比对相片 :</ion-label>
+  </ion-item>
   <div id="picDiv1" style="position: relative;">
   <img [src]="firstPicturePath" id="imgShow1" >
   </div>
@@ -35,6 +38,9 @@
   <div padding-top padding-bottom="50px">
     <button type="button" ion-button block (click)="submitUrl(1)">检 测</button>
   </div>
+  <ion-item>
+    <ion-label  text-left>第二张比对相片 :</ion-label>
+  </ion-item>
   <div id="picDiv2" style="position: relative;" >
   <img [src]="secondPicturePath" id="imgShow2">
   </div>

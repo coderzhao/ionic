@@ -3,6 +3,8 @@ import { NavController,LoadingController,ModalController } from 'ionic-angular';
 import { DetectPage } from './detect';
 import { VerifyPage } from './verify';
 import {GalleryPage} from "./gallery";
+import {SearchPage} from "./search";
+
 @Component({
   selector: 'page-function',
   templateUrl: 'function.html'
@@ -21,7 +23,9 @@ export class FunctionPage {
       this.navCtrl.push(DetectPage);
     }else if(flag=="2"){
       this.navCtrl.push(VerifyPage);
-    }else if(flag="3"){
+    }else if(flag=="3"){
+      this.navCtrl.push(SearchPage);
+    }else if(flag=="4"){
       this.navCtrl.push(GalleryPage);
     }
   }
