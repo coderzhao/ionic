@@ -4,6 +4,7 @@ import {Component} from '@angular/core';
 import {ViewController, ToastController} from 'ionic-angular';
 import {NativeService} from "../../providers/NativeService";
 import {CROSS_URL} from "../../providers/Constants";
+import {MY_URL} from "../../providers/Constants";
 import {IMG_BASE} from "../../providers/Constants";
 import {Http} from '@angular/http';
 import { PhotoViewer } from 'ionic-native';
@@ -57,7 +58,7 @@ export class DetectPage {
     let formdata = new FormData();
     let filedata = dataURItoBlob(this.picturePath);
     formdata.append("photo", filedata);
-    this.http.post(CROSS_URL + "customer/detect-face", formdata).map(res =>
+    this.http.post(MY_URL + "customer/detect-face", formdata).map(res =>
       res.json()).subscribe(data => {
       console.log(data);
       if(data==""){
@@ -87,7 +88,9 @@ export class DetectPage {
     let filedata =dataURItoBlob(this.picturePath);
     let formdata = new FormData();
     formdata.append("photo", filedata);
-    this.http.post(CROSS_URL + "customer/detect-face", formdata).map(res =>
+
+    //this.http.post(CROSS_URL + "customer/detect-face", formdata).map(res =>
+      this.http.post(MY_URL + "customer/detect-face", formdata).map(res =>
       res.json()).subscribe(data => {
       console.log(data);
       if(data==""){
@@ -110,29 +113,38 @@ export class DetectPage {
   }
 
   submitUrl() {
-    let formData = new FormData();
-    formData.append("photo", this.picture.Url);
-    this.http.post(CROSS_URL + "customer/detect-face", formData).map(res =>
-      res.json()).subscribe(data => {
-      console.log(data);
-      this.picturePath=this.picture.Url;
-      if(data==""){
-        let toast = this.toastCtrl.create({
-          message: "图片中没有找到人脸！",
-          duration: 2000
-        });
-        toast.present();
-      }else{
-        handleData(this.picturePath,data,"detect");
-      }
-    },erorr=> {
-      console.log(erorr);
+    if(this.picture.Url==""){
       let toast = this.toastCtrl.create({
-        message: "获取图片人脸失败，请检查！",
+        message: "请输入URL再进行检测！",
         duration: 2000
       });
       toast.present();
-    });
+    }else{
+      let formData = new FormData();
+      formData.append("photo", this.picture.Url);
+      //this.http.post(CROSS_URL + "customer/detect-face", formData).map(res =>
+      this.http.post(MY_URL + "customer/detect-face", formData).map(res =>
+        res.json()).subscribe(data => {
+        console.log(data);
+        this.picturePath=this.picture.Url;
+        if(data==""){
+          let toast = this.toastCtrl.create({
+            message: "图片中没有找到人脸！",
+            duration: 2000
+          });
+          toast.present();
+        }else{
+          handleData(this.picturePath,data,"detect");
+        }
+      },erorr=> {
+        console.log(erorr);
+        let toast = this.toastCtrl.create({
+          message: "获取图片人脸失败，请检查！",
+          duration: 2000
+        });
+        toast.present();
+      });
+    }
   }
 
   dismiss() {

@@ -1,6 +1,7 @@
 import {Component} from '@angular/core';
 import { LoginPage } from '../login/login';
 import { CROSS_URL } from "../../providers/Constants";
+import {MY_URL} from "../../providers/Constants";
 import {NavController,ViewController,ToastController,LoadingController} from 'ionic-angular';
 import {Http} from '@angular/http';
 import 'rxjs/add/operator/map';
@@ -32,7 +33,7 @@ export class RegisterPage{
 
 	checkUserName(){
     if(this.userInfo.username !=""){
-      this.http.get(CROSS_URL + "/customer/check?userName=" + this.userInfo.username).map(res =>
+      this.http.get(MY_URL + "/customer/check?userName=" + this.userInfo.username).map(res =>
         res.json()).subscribe(data => {
         console.log(data);
         if (data) {
@@ -112,7 +113,7 @@ export class RegisterPage{
 		});
 		loading.present();
 		setTimeout(()=>{
-      this.http.get(CROSS_URL + "/customer/appCommitReg?name=" + this.userInfo.username + "&password=" + this.userInfo.password
+      this.http.get(MY_URL + "/customer/appCommitReg?name=" + this.userInfo.username + "&password=" + this.userInfo.password
       +"&email="+this.userInfo.email).map(res =>
         res.json()).subscribe(data => {
         console.log(data);

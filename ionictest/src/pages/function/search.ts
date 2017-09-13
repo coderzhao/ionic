@@ -5,6 +5,7 @@ import { Component } from '@angular/core';
 import {ViewController, ToastController, List} from 'ionic-angular';
 import {NativeService} from "../../providers/NativeService";
 import {CROSS_URL} from "../../providers/Constants";
+import {MY_URL} from "../../providers/Constants";
 import {IMG_BASE} from "../../providers/Constants";
 import {Http} from '@angular/http';
 import { PhotoViewer } from 'ionic-native';
@@ -60,7 +61,7 @@ export class SearchPage {
     let formdata = new FormData();
     let filedata = dataURItoBlob(this.picturePath);
     formdata.append("photo", filedata);
-    this.http.post(CROSS_URL + "customer/getDemoFace", formdata).map(res =>
+    this.http.post(MY_URL + "customer/getDemoFace", formdata).map(res =>
       res.json()).subscribe(data => {
       console.log(data);
       if(data==""){
@@ -91,8 +92,9 @@ export class SearchPage {
     //base64 转换成二进制文件，封装到表单里进行提交
     let filedata =dataURItoBlob(this.picturePath);
     let formdata = new FormData();
+    formdata.append("n","4");
     formdata.append("photo", filedata);
-    this.http.post(CROSS_URL + "customer/getDemoFace", formdata).map(res =>
+    this.http.post(MY_URL + "customer/getDemoFace", formdata).map(res =>
       res.json()).subscribe(data => {
       console.log(data);
       if(data==""){
@@ -117,35 +119,43 @@ export class SearchPage {
   }
 
   submitUrl() {
-    this.searchArray=[];
-    this.Title="";
-    let formData = new FormData();
-    formData.append("n","4");
-    formData.append("photo", this.picture.Url);
-    //传递app端登录用户的用户名
-    this.http.post(CROSS_URL + "customer/getDemoFace", formData).map(res =>
-      res.json()).subscribe(data => {
-      console.log(data);
-      this.picturePath=this.picture.Url;
-      if(data==""){
-        let toast = this.toastCtrl.create({
-          message: "没有找到相关图片！",
-          duration: 2000
-        });
-        toast.present();
-      }else{
-        let dataObj=eval(data.results);
-        this.Title="在图库中的查找相似结果 ："
-        this.searchArray=showResult(dataObj);
-      }
-    },erorr=> {
-      console.log(erorr);
+    if(this.picture.Url==""){
       let toast = this.toastCtrl.create({
-        message: "获取图片人脸失败，请检查！",
+        message: "请输入URL再进行检测！",
         duration: 2000
       });
       toast.present();
-    });
+    }else{
+      this.searchArray=[];
+      this.Title="";
+      let formData = new FormData();
+      formData.append("n","4");
+      formData.append("photo", this.picture.Url);
+      //传递app端登录用户的用户名
+      this.http.post(MY_URL + "customer/getDemoFace", formData).map(res =>
+        res.json()).subscribe(data => {
+        console.log(data);
+        this.picturePath=this.picture.Url;
+        if(data==""){
+          let toast = this.toastCtrl.create({
+            message: "没有找到相关图片！",
+            duration: 2000
+          });
+          toast.present();
+        }else{
+          let dataObj=eval(data.results);
+          this.Title="在图库中的查找相似结果 ："
+          this.searchArray=showResult(dataObj);
+        }
+      },erorr=> {
+        console.log(erorr);
+        let toast = this.toastCtrl.create({
+          message: "获取图片人脸失败，请检查！",
+          duration: 2000
+        });
+        toast.present();
+      });
+    }
   }
 
   dismiss() {

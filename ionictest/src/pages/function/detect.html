@@ -16,19 +16,21 @@
 
     <ion-content padding text-center>
       <div id="detectFrame" style="position: relative;">
-      <img [src]="picturePath"  id="detectImg">
+      <img [src]="picturePath"  id="detectImg" (click)="getPicture(0)">
       </div>
       <div padding-top>
         <button ion-button block color="light" (click)="getPicture(0)">从相册选一张</button>
       </div>
       <div padding-top>
-        <button ion-button block color="light" (click)="test()">拍一张照片</button>
+        <button ion-button block color="light" (click)="getPicture(1)">拍一张照片</button>
       </div>
+      <ion-card padding-top>
       <ion-item>
-      <ion-label padding-top text-left>URL</ion-label>
+      <ion-label text-left>URL ：</ion-label>
       <ion-input type="text" [(ngModel)]="picture.Url" clearInput ></ion-input>
       </ion-item>
       <div padding-top>
         <button type="button" ion-button block (click)="submitUrl()">检 测</button>
       </div>
+      </ion-card>
     </ion-content>

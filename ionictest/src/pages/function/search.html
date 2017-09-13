@@ -9,7 +9,7 @@
 
 <ion-content padding text-center>
   <div id="searchFrame" style="position: relative;">
-    <img [src]="picturePath"  id="searchImg">
+    <img [src]="picturePath"  id="searchImg" (click)="getPicture(0)">
   </div>
   <div padding-top>
     <button ion-button block color="light" (click)="getPicture(0)">从相册选取</button>
@@ -17,6 +17,7 @@
   <div padding-top>
     <button ion-button block color="light" (click)="getPicture(1)">拍一张照片</button>
   </div>
+  <ion-card padding-top>
   <ion-item>
     <ion-label  text-left>URL</ion-label>
     <ion-input type="text" [(ngModel)]="picture.Url" clearInput ></ion-input>
@@ -24,14 +25,14 @@
   <div padding-top>
     <button type="button" ion-button block (click)="submitUrl()">搜索图库</button>
   </div>
-
+  </ion-card>
   <ion-item>
     <ion-label padding-top text-left>{{Title}}</ion-label>
   </ion-item>
   <div class="row ">
     <div class="col-sm-5" *ngFor="let item of searchArray">
       <div class="box_img" margin-left="15px">
-        <img width="140" height="140"  src={{item}} class='img-responsive'>
+        <img width="155" height="155"  src={{item}} class='img-responsive'>
       </div>
     </div>
   </div>

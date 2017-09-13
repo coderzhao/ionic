@@ -5,6 +5,7 @@ import { Component } from '@angular/core';
 import {ViewController,ToastController} from 'ionic-angular';
 import {NativeService} from "../../providers/NativeService";
 import {CROSS_URL} from "../../providers/Constants";
+import {MY_URL} from "../../providers/Constants";
 import {IMG_BASE} from "../../providers/Constants";
 import {Http} from '@angular/http';
 import 'rxjs/add/operator/map';
@@ -73,10 +74,15 @@ export class VerifyPage {
       formdata.append("photo2", this.secondPicturePath);
     }
 
-    this.http.post(CROSS_URL + "customer/verify-face", formdata).map(res =>
+    this.http.post(MY_URL + "customer/verify-face", formdata).map(res =>
       res.json()).subscribe(data => {
       console.log(data);
-      readResData(data,flag);
+      let resultMessage=readResData(data,flag);
+      let toast = this.toastCtrl.create({
+        message: resultMessage,
+        duration: 3000
+      });
+      toast.present();
     },erorr=> {
       console.log(erorr);
       let toast = this.toastCtrl.create({
@@ -87,42 +93,68 @@ export class VerifyPage {
     });
   }
 
-  submitUrl(flag) {
-    removeDiv();
-    let formdata = new FormData();
+  checkUrl(flag){
     if(flag==1){
-      this.firstPicturePath=this.picture.firstUrl;
-      formdata.append("photo1", this.picture.firstUrl);
-      if(this.secondPicturePath.indexOf("data:image")==0){
-        //base64 转换成二进制文件，封装到表单里进行提交
-        let secondFileData =dataURItoBlob(this.secondPicturePath);
-        formdata.append("photo2", secondFileData);
-      }else{
-        formdata.append("photo2", this.secondPicturePath);
+      if(this.picture.firstUrl==""){
+        return false;
       }
-    }else if(flag==2){
-      this.secondPicturePath=this.picture.secondUrl;
-      formdata.append("photo2", this.picture.secondUrl);
-      if(this.firstPicturePath.indexOf("data:image")==0){
-        //base64 转换成二进制文件，封装到表单里进行提交
-        let firstFileData =dataURItoBlob(this.firstPicturePath);
-        formdata.append("photo1", firstFileData);
-      }else{
-        formdata.append("photo1", this.firstPicturePath);
+    } else if(flag ==2){
+        if(this.picture.secondUrl==""){
+          return false;
+        }
       }
+      return true;
     }
-    this.http.post(CROSS_URL + "customer/verify-face", formdata).map(res =>
-      res.json()).subscribe(data => {
-      console.log(data);
-        readResData(data,flag);
-    },erorr=> {
-      console.log(erorr);
+
+  submitUrl(flag) {
+    if(this.checkUrl(flag)){
+      removeDiv();
+      let formdata = new FormData();
+      if(flag==1){
+        this.firstPicturePath=this.picture.firstUrl;
+        formdata.append("photo1", this.picture.firstUrl);
+        if(this.secondPicturePath.indexOf("data:image")==0){
+          //base64 转换成二进制文件，封装到表单里进行提交
+          let secondFileData =dataURItoBlob(this.secondPicturePath);
+          formdata.append("photo2", secondFileData);
+        }else{
+          formdata.append("photo2", this.secondPicturePath);
+        }
+      }else if(flag==2){
+        this.secondPicturePath=this.picture.secondUrl;
+        formdata.append("photo2", this.picture.secondUrl);
+        if(this.firstPicturePath.indexOf("data:image")==0){
+          //base64 转换成二进制文件，封装到表单里进行提交
+          let firstFileData =dataURItoBlob(this.firstPicturePath);
+          formdata.append("photo1", firstFileData);
+        }else{
+          formdata.append("photo1", this.firstPicturePath);
+        }
+      }
+      this.http.post(MY_URL + "customer/verify-face", formdata).map(res =>
+        res.json()).subscribe(data => {
+        console.log(data);
+        let resultMessage=readResData(data,flag);
+        let toast = this.toastCtrl.create({
+          message: resultMessage,
+          duration: 3000
+        });
+        toast.present();
+      },erorr=> {
+        console.log(erorr);
+        let toast = this.toastCtrl.create({
+          message: "获取图片失败，请检查！",
+          duration: 2000
+        });
+        toast.present();
+      });
+    }else{
       let toast = this.toastCtrl.create({
-        message: "获取图片失败，请检查！",
+        message: "请输入URL再进行检测！",
         duration: 2000
       });
       toast.present();
-    });
+    }
   }
 
   dismiss() {

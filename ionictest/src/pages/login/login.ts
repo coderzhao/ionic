@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { NavController,LoadingController,ToastController,ModalController,ViewController} from 'ionic-angular';
 import { CROSS_URL } from "../../providers/Constants";
+import {MY_URL} from "../../providers/Constants";
 import {RegisterPage} from '../register/register';
 import {Http} from '@angular/http';
 import 'rxjs/add/operator/map';
@@ -76,7 +77,7 @@ export class LoginPage {
   	loading.present();
   	setTimeout(()=>{
       //验证账号密码是否正确，记录登录状态
-      this.http.get(CROSS_URL + "/customer/loginCheck?name=" + this.userInfo.username + "&password=" + this.userInfo.password).map(res =>
+      this.http.get(MY_URL + "/customer/loginCheck?name=" + this.userInfo.username + "&password=" + this.userInfo.password).map(res =>
         res.json()).subscribe(data => {
         console.log(data);
         if(data){
