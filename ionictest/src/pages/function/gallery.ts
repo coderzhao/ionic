@@ -1,6 +1,8 @@
 declare function handleData(url:any,data:any,flag:any);
 declare function dataURItoBlob(basestring:any);
 declare function showResult(dataobj:any);
+declare function upload1();
+declare function disMiss(flag:any);
 import { Component } from '@angular/core';
 import {ViewController, ToastController, List} from 'ionic-angular';
 import {NativeService} from "../../providers/NativeService";
@@ -17,7 +19,7 @@ import { PhotoViewer } from 'ionic-native';
 export class GalleryPage {
 
   isChange: boolean = false;//头像是否改变标识
-  picturePath: string = './assets/img/1.png';//用户默认图片
+  picturePath: string = 'data:image/jpeg;base64,' + IMG_BASE;
   imageBase64: string;//保存头像base64,用于上传
   base64Img1:string = 'data:image/jpeg;base64,' + IMG_BASE;
   searchArray:Array<any>=[];//查找图库的数据集合
@@ -42,10 +44,12 @@ export class GalleryPage {
     if (type == 1) {
       this.nativeService.getPictureByCamera(options).then(imageBase64 => {
         this.getPictureSuccess(imageBase64);
+        disMiss(1);
       });
     } else {
       this.nativeService.getPictureByPhotoLibrary(options).then(imageBase64 => {
         this.getPictureSuccess(imageBase64);
+        disMiss(1);
       });
     }
   }
@@ -139,11 +143,9 @@ export class GalleryPage {
 
   getMyGallery(){
     this.searchArray=[];
-    this.Title="";
     this.http.get(MY_URL + "customer/getMyGallery").map(res =>
       res.json()).subscribe(data => {
       console.log(data);
-      this.Title="我的图库 ：";
       this.galleryArray =data;
     },erorr=> {
       console.log(erorr);
@@ -175,6 +177,10 @@ export class GalleryPage {
         toast.present();
       });
     }
+  }
+
+  click(){
+    upload1();
   }
 
 }

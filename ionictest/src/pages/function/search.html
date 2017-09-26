@@ -1,44 +1,76 @@
+<div id="test"></div>
+<!--弹出框-->
+<div class="pop-up1">
+  <div class="cancel_icon1"><img src="assets/img/verify/cancel.png"/></div>
+  <div class="pop_title">请选择您的上传方式</div>
+  <div class="pop_box">
+    <div class="shooting">
+      <div class="pop_icon"><img src="assets/img/verify/pop_icon1.png"/></div>
+      <div class="pop_text" (click)="getPicture(1)">拍摄上传</div>
+    </div>
+    <div class="shooting">
+      <div class="pop_icon"><img src="assets/img/verify/pop_icon2.png"/></div>
+      <div class="pop_text" (click)="getPicture(0)" >从图库选择</div>
+    </div>
+  </div>
+</div>
 <ion-header>
   <!--<ion-toolbar color="primary">-->
-  <ion-navbar color="selfblue">
+  <ion-navbar color="selfColor">
     <ion-title>
       人脸搜索
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding text-center>
-  <div id="searchFrame" style="position: relative;">
-    <img [src]="picturePath"  id="searchImg" (click)="getPicture(0)">
-  </div>
-  <div padding-top>
-    <button ion-button block color="light" (click)="getPicture(0)">从相册选取</button>
-  </div>
-  <div padding-top>
-    <button ion-button block color="light" (click)="getPicture(1)">拍一张照片</button>
-  </div>
-  <ion-card padding-top>
+<ion-content >
   <ion-item>
-    <ion-label  text-left>URL</ion-label>
-    <ion-input type="text" [(ngModel)]="picture.Url" clearInput ></ion-input>
+    <div id="searchFrame"  style="width: 50%;margin:0 auto">
+      <img [src]="picturePath" style="border: 5px solid #3bdecd;" id="searchImg" (click)="getPicture(0)"/>
+    </div>
   </ion-item>
-  <div padding-top>
-    <button type="button" ion-button block (click)="submitUrl()">搜索图库</button>
-  </div>
-  </ion-card>
-  <ion-item>
-    <ion-label padding-top text-left>{{Title}}</ion-label>
-  </ion-item>
-  <div class="row ">
-    <div class="col-sm-5" *ngFor="let item of searchArray">
-      <div class="box_img" margin-left="15px">
-        <img width="155" height="155"  src={{item}} class='img-responsive'>
+  <ion-card padding>
+    <div class="upload_box2">
+      <div class="upload_minbox2">
+        <div class="upload_btn1" (click)="click()">上传图片</div>
       </div>
     </div>
-  </div>
-
-<div id="searchResult">
-</div>
+    <div class="upload_url">
+      <div class="upload_urlbox">
+        <div class="url_btn">
+          <!--<input type="text" placeholder="请输入图片url" [(ngModel)]="picture.Url"/>-->
+          <ion-input style="height: 30px;margin-top: -11px;" type="text" placeholder="请输入图片url" [(ngModel)]="picture.Url" clearInput mode="ios"></ion-input>
+        </div>
+        <div class="url_detect" (click)="submitUrl()">搜索</div>
+      </div>
+    </div>
+  </ion-card>
+  <ion-card >
+    <!--<div class="results_box2">-->
+      <!--<div class="results_title" >{{Title}}</div>-->
+      <!--<div class="results_boxtext2" >-->
+        <!--<div class="min_img"*ngFor="let item of searchArray">-->
+          <!--<img src={{item}}/>-->
+        <!--</div>-->
+      <!--</div>-->
+      <!--<ion-item>-->
+      <!--<p id="searchResult"></p>-->
+      <!--</ion-item>-->
+    <!--</div>-->
+    <div class="results_box" id="searchResultBox">
+      <div class="results_title" id="searchTitle1" (click)="resultclick()"><span><img id="resultImg" src="assets/img/right_icon.png" (click)="resultclick()"/></span>{{Title}}</div>
+      <div class="results_boxtext" id="searchResultBoxText">
+        <div class="min_img"*ngFor="let item of searchArray">
+        <img src={{item}}/>
+        </div>
+    </div>
+        <p id="resultSearch"style="margin-left:7%;margin-top: 3%;"></p>
+    </div>
+    <div class="results_box" id="searchResponseBox">
+      <div class="results_title" id="searchTitle2" (click)="responseclick()"><span><img id="responseImg" src="assets/img/right_icon.png" (click)="responseclick()"/></span>ResponseJson</div>
+      <div class="response_boxtext" id="searchResponseBoxText">
+        <textarea id="responseSearch" style="width: 95%;height: 200px;" ></textarea>
+      </div>
+    </div>
+  </ion-card>
 </ion-content>
-
-

@@ -1,24 +1,39 @@
-<ion-header>
-  <ion-navbar color="selfblue">
-    <ion-title>
-      功能中心
-    </ion-title>
+<ion-header color="primary">
+  <ion-navbar color ="selfColor">
+    <ion-title>功能中心</ion-title>
   </ion-navbar>
 </ion-header>
 <ion-content padding >
-  <img src='./assets/img/6.png' width="100%">
-  <ion-list>
-    <button ion-item  (click)="itemClick(1)">
-      人脸检测
-    </button>
-    <button ion-item  (click)="itemClick(2)">
-      人脸比对
-    </button>
-    <button ion-item  (click)="itemClick(3)">
-      人脸搜索
-    </button>
-    <button ion-item  (click)="itemClick(4)">
-      图库管理
-    </button>
-  </ion-list>
+  <div class="cantent">
+    <div class="cantent_img">
+      <img src="assets/img/function/bg_img.jpg" />
+    </div>
+    <div class="iconbox">
+      <div class="icon_table">
+        <div class="icon_border icon_border1">
+          <img [src]="pictureOne" (click)="itemClick(1)">
+        </div>
+        <div class="icon_text icon_text1">人脸检测</div>
+      </div>
+      <div class="icon_table">
+        <div class="icon_border icon_border2">
+          <img [src]="pictureTwo" (click)="itemClick(2)">
+        </div>
+        <div class="icon_text icon_text2">人脸比对</div>
+      </div>
+      <div class="icon_table">
+        <div class="icon_border icon_border3">
+          <img [src]="pictureThree" (click)="itemClick(3)">
+        </div>
+        <div class="icon_text icon_text3">人脸搜索</div>
+      </div>
+      <div class="icon_table">
+        <div class="icon_border icon_border4">
+          <img [src]="pictureFour" (click)="itemClick(4)">
+        </div>
+        <div class="icon_text icon_text4">图库管理</div>
+      </div>
+    </div>
+  </div>
 </ion-content>
+

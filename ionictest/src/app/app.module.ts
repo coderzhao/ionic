@@ -17,6 +17,7 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import {NativeService} from '../providers/NativeService';
 import {HttpModule} from "@angular/http";
+import {AppMinimize} from "@ionic-native/app-minimize";
 
 
 @NgModule({
@@ -58,7 +59,8 @@ import {HttpModule} from "@angular/http";
     StatusBar,
     SplashScreen,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
-    NativeService
+    NativeService,
+    AppMinimize
   ]
 })
 export class AppModule {}

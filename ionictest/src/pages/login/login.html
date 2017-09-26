@@ -1,10 +1,10 @@
 <ion-header>
-  <ion-toolbar>
+  <ion-toolbar color="selfColor">
     <ion-title mode="ios">
       登录页面
     </ion-title>
     <ion-buttons start>
-      <button ion-button color="primary" (click)="goBack()">
+      <button ion-button  (click)="goBack()">
         返回
       </button>
     </ion-buttons>
@@ -14,21 +14,21 @@
   <ion-list>
     <ion-item>
       <ion-label floating>账号</ion-label>
-      <ion-input type="text" [(ngModel)]="userInfo.username" clearInput></ion-input>
+      <ion-input type="text" [(ngModel)]="userInfo.username"  clearInput></ion-input>
     </ion-item>
     <ion-item>
       <ion-label floating>密码</ion-label>
       <ion-input type="password" [(ngModel)]="userInfo.password" clearInput></ion-input>
     </ion-item>
   </ion-list>
-  <button ion-button block (click)="login()">登录</button>
+  <button ion-button block (click)="login()" color="selfColor">登录</button>
 
 
   <ion-row>
     <ion-col>
       <div class="textAlignRight marginTop10">
-        <a href="javascript:void(0)" (click)="forgetPassword()" style="font-size: larger">忘记密码</a>
-        <button ion-button outline (click)="goToRegister()">还没有账号？点击注册</button>
+        <!--<a href="javascript:void(0)" (click)="forgetPassword()" style="font-size: larger">忘记密码</a>-->
+        <button ion-button outline (click)="goToRegister()" color="selfColor">还没有账号？点击注册</button>
       </div>
     </ion-col>
   </ion-row>

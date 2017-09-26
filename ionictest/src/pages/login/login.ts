@@ -23,8 +23,8 @@ export class LoginPage {
 
 	}
 	userInfo:UserInfo={
-		username:'',
-		password:'',
+		username:localStorage.username,
+		password:localStorage.password,
 		Url:'images/1.jpg'
 	}
 
@@ -83,6 +83,7 @@ export class LoginPage {
         if(data){
           localStorage.logined =data;
           localStorage.username = this.userInfo.username;
+          localStorage.password =this.userInfo.password;
           let msg={
             handleFlag:"注销",
             color:"danger"
@@ -90,7 +91,7 @@ export class LoginPage {
           this.viewCtrl.dismiss(msg);
           let toast = this.toastCtrl.create({
             message: "登录成功！",
-            duration: 2000
+            duration: 1000
           });
           toast.present();
         }

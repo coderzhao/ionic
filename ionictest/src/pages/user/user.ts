@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
-import { NavController,LoadingController,ModalController } from 'ionic-angular';
+import { NavController,LoadingController,ModalController,ToastController } from 'ionic-angular';
 import { LoginPage } from '../login/login';
 import { DetailPage } from '../detail/detail';
+import {MY_URL} from "../../providers/Constants";
+import {Http} from '@angular/http';
 @Component({
   selector: 'page-user',
   templateUrl: 'user.html'
@@ -12,13 +14,15 @@ export class UserPage {
 
   constructor(public navCtrl: NavController,
   public LoadCtrl:LoadingController,
-  public modalCtrl:ModalController) {
+  public modalCtrl:ModalController,
+  public toastCtrl:ToastController,
+  public http:Http) {
     if(localStorage.logined =="true"){
       this.handleFlag="注销";
       this.color="danger";
     }else{
       this.handleFlag="登录";
-      this.color="primary";
+      this.color="selfColor";
     }
   }
 
@@ -39,9 +43,19 @@ export class UserPage {
   });
   loading.present();
   setTimeout(()=>{
-    localStorage.logined = "false";
-    this.handleFlag="登录";
-    this.color="primary";
+    this.http.get(MY_URL + "customer/exit").subscribe(data => {
+        localStorage.logined = "false";
+        this.handleFlag="登录";
+        this.color="selfColor";
+    },erorr=> {
+      console.log(erorr);
+      let toast = this.toastCtrl.create({
+        message: "注销失败，请检查！",
+        duration: 2000
+      });
+      toast.present();
+    });
+
   },1000);
   setTimeout(()=>{
     loading.dismiss();
@@ -51,7 +65,11 @@ export class UserPage {
   let modal = this.modalCtrl.create(LoginPage);
   modal.onDidDismiss(data => {
     this.handleFlag=data.handleFlag;
-    this.color=data.color;
+    if(data.handleFlag=="登录"){
+      this.color="selfColor";
+    }else{
+      this.color=data.color;
+    }
   })
     modal.present();
   }

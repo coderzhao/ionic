@@ -1,10 +1,10 @@
 <ion-header>
-	<ion-toolbar>
+	<ion-toolbar color="selfColor">
 		<ion-title mode="ios">
 		 注册页面
 		</ion-title>
 		<ion-buttons start>
-			<button ion-button color="primary" (click)="goBack()">返回</button>
+			<button ion-button (click)="goBack()">返回</button>
 		</ion-buttons>
 	</ion-toolbar>
 </ion-header>
@@ -27,4 +27,4 @@
 			<ion-input type="password" [(ngModel)]="userInfo.againPassword" clearInput></ion-input>
 		</ion-item>
 	</ion-list>
-	<button ion-button block (click)="checkUserName()">注册</button>
+	<button ion-button block (click)="checkUserName()" color="selfColor">注册</button>
