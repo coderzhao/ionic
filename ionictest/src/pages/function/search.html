@@ -29,7 +29,6 @@
       <img [src]="picturePath" style="border: 5px solid #3bdecd;" id="searchImg" (click)="getPicture(0)"/>
     </div>
   </ion-item>
-  <ion-card padding>
     <div class="upload_box2">
       <div class="upload_minbox2">
         <div class="upload_btn1" (click)="click()">上传图片</div>
@@ -44,8 +43,7 @@
         <div class="url_detect" (click)="submitUrl()">搜索</div>
       </div>
     </div>
-  </ion-card>
-  <ion-card >
+
     <!--<div class="results_box2">-->
       <!--<div class="results_title" >{{Title}}</div>-->
       <!--<div class="results_boxtext2" >-->
@@ -72,5 +70,4 @@
         <textarea id="responseSearch" style="width: 95%;height: 200px;" ></textarea>
       </div>
     </div>
-  </ion-card>
 </ion-content>

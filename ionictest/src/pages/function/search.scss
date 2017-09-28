@@ -154,6 +154,7 @@ page-search {
     width: 100%;
     height: 25px;
     margin-top: 10px;
+    margin-left: 8%;
   }
   .upload_box3{
     width: 100%;
@@ -201,11 +202,15 @@ page-search {
     color: white;
     text-align: center;
     font-size: 14px;
+    margin-top: 15px;
+    margin-bottom: 15px;
   }
   .upload_url{
     width: 100%;
     height: 30px;
     margin-top: 20px;
+    margin-left: 8%;
+    margin-bottom: 30px;
   }
   .upload_url2{
     width: 100%;
@@ -274,7 +279,6 @@ page-search {
     /*border: 1px solid #3bdecd;*/
     background-color: #79f0b4;
     text-align: center;
-    margin-left: 2px;
     color: white;
   }
   .url_detect2{
@@ -285,7 +289,6 @@ page-search {
     /*border: 1px solid #3bdecd;*/
     background-color: #79f0b4;
     text-align: center;
-    margin-left: 2px;
     color: white;
   }
   //.results_box{
@@ -299,10 +302,11 @@ page-search {
   .results_box{
     margin-top: 20px;
     border-radius: 10px;
-    width: 100%;
+    width: 90%;
     height:40px;
     border: 1px solid #68676c;
     box-shadow: 3px 3px 5px #939595;
+    margin-left: 4%;
   }
   .results_box2{
     margin-top: 10px;
@@ -364,7 +368,7 @@ page-search {
   }
   .results_title span{
     margin-right:5px;
-    width: 18px;
+    width: 15px;
     display: block;
     float: left;
     margin-top: 10px;
