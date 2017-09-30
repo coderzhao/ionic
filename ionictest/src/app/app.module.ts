@@ -13,6 +13,7 @@ import { FunctionPage } from '../pages/function/function';
 import { VerifyPage } from '../pages/function/verify';
 import { GalleryPage } from '../pages/function/gallery';
 import { SearchPage } from '../pages/function/search';
+import {SearchAllPage} from '../pages/function/searchAll';
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import {NativeService} from '../providers/NativeService';
@@ -33,7 +34,8 @@ import {AppMinimize} from "@ionic-native/app-minimize";
     FunctionPage,
     VerifyPage,
     GalleryPage,
-    SearchPage
+    SearchPage,
+    SearchAllPage
   ],
   imports: [
     BrowserModule,
@@ -53,7 +55,8 @@ import {AppMinimize} from "@ionic-native/app-minimize";
     FunctionPage,
     VerifyPage,
     GalleryPage,
-    SearchPage
+    SearchPage,
+    SearchAllPage
   ],
   providers: [
     StatusBar,

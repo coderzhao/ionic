@@ -59,34 +59,6 @@ export class DetectPage {
     }
   }
 
-  // private test(){
-  //   this.imageBase64 = <string>IMG_BASE;
-  //   this.picturePath = 'data:image/jpeg;base64,' + IMG_BASE;
-  //   let formdata = new FormData();
-  //   let filedata = dataURItoBlob(this.picturePath);
-  //   formdata.append("photo", filedata);
-  //   this.http.post(MY_URL + "customer/detect-face", formdata).map(res =>
-  //     res.json()).subscribe(data => {
-  //     console.log(data);
-  //     if(data==""){
-  //       let toast = this.toastCtrl.create({
-  //         message: "图片中没有找到人脸！",
-  //         duration: 2000
-  //       });
-  //       toast.present();
-  //     }else{
-  //       handleData(this.picturePath,data,"detect");
-  //     }
-  //   },erorr=> {
-  //     console.log(erorr);
-  //     clearResult();
-  //     let toast = this.toastCtrl.create({
-  //       message: "获取图片失败，请检查！",
-  //       duration: 2000
-  //     });
-  //     toast.present();
-  //   });
-  // }
 
   private getPictureSuccess(imageBase64) {
     this.isChange = true;

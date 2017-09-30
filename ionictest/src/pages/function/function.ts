@@ -4,6 +4,8 @@ import { DetectPage } from './detect';
 import { VerifyPage } from './verify';
 import {GalleryPage} from "./gallery";
 import {SearchPage} from "./search";
+import {SearchAllPage} from "./searchAll";
+
 declare function detectDivWidth();
 
 @Component({
@@ -33,6 +35,7 @@ export class FunctionPage {
       this.navCtrl.push(VerifyPage);
     }else if(flag=="3"){
       this.navCtrl.push(SearchPage);
+      // this.navCtrl.push(SearchAllPage);
     }else if(flag=="4"){
       if(localStorage.logined=="true"){
         this.navCtrl.push(GalleryPage);

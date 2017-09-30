@@ -5,6 +5,7 @@
   "typescript": true,
   "proxies": [{
     "path": "/browser",
-    "proxyUrl": "http://yun.anytec.cn:8080/"
+    "proxyUrl": "http://192.168.10.118:8080/"
   }]
 }
+

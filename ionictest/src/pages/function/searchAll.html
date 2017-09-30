@@ -1,0 +1,58 @@
+<body onload="testonload()">
+<div id="test"></div>
+<!--弹出框-->
+<div class="pop-up1">
+  <div class="cancel_icon1"><img src="assets/img/verify/cancel.png"/></div>
+  <div class="pop_title">请选择您的上传方式</div>
+  <div class="pop_box">
+    <div class="shooting">
+      <div class="pop_icon"><img src="assets/img/verify/pop_icon1.png"/></div>
+      <div class="pop_text" (click)="getPicture(1)">拍摄上传</div>
+    </div>
+    <div class="shooting">
+      <div class="pop_icon"><img src="assets/img/verify/pop_icon2.png"/></div>
+      <div class="pop_text" (click)="getPicture(0)" >从图库选择</div>
+    </div>
+  </div>
+</div>
+<ion-header>
+  <!--<ion-toolbar color="primary">-->
+  <ion-navbar color="selfColor">
+    <ion-title>
+      人脸搜索all
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content >
+  <ion-card>
+    <div id="searchAllFrame" >
+      <img [src]="picturePath"  id="searchAllImg" (click)="getPicture(0)"/>
+    </div>
+  </ion-card>
+  <ion-card padding>
+  <div class="faBox">
+    <div margin-left="5%" >设置阀值(%)：</div>
+    <div class="fa_input">
+      <div style="width: 80%;float: left;"> <ion-range [(ngModel)]="numValue" style="height: 30px;width: 100%;" ></ion-range></div>
+      <div class="fa_value" style="width:15%;height: 28px;float: left;margin-left: -3%;"><input id="confidence" type="text" value="{{numValue}}" (change)="valueChange()"/></div>
+    </div>
+  </div>
+  </ion-card>
+  <div padding>
+    <button ion-button block color="light" style="background-color: #79f0b4;color: white;text-align: center;" (click)="click()">上传图片</button>
+  </div>
+
+
+  <!--<div class="upload_url">-->
+    <!--<div class="upload_urlbox">-->
+      <!--<div class="url_btn">-->
+        <!--&lt;!&ndash;<input type="text" placeholder="请输入图片url" [(ngModel)]="picture.Url"/>&ndash;&gt;-->
+        <!--<ion-input style="height: 30px;margin-top: -11px;" type="text" placeholder="请输入图片url" [(ngModel)]="picture.Url" clearInput mode="ios"></ion-input>-->
+      <!--</div>-->
+      <!--<div class="url_detect" (click)="submitUrl()">搜索</div>-->
+    <!--</div>-->
+  <!--</div>-->
+</ion-content>
+</body>
+

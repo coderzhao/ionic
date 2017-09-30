@@ -1,4 +1,4 @@
-page-search {
+page-searchall {
   * {
     margin: 0;
     padding: 0
@@ -457,15 +457,23 @@ page-search {
     color: #68676C;
   }
   .fa_input{
-    width: 40%;
+    width: 100%;
+    height: 30px;
   }
   .fa_value{
     margin-left: 5%;
-    width: 12%;
-    height: 100%;
     color: white;
     text-align: center;
     border: 1px solid #79f0b4;
+  }
+  .fa_value input{
+    width: 100%;
+    height: 100%;
+    border: none;
+    padding:0 2px;
+    outline: none;
+    color: #484949;
+    //background-color: #79f0b4;
   }
 
 }
