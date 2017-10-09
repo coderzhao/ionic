@@ -5,6 +5,7 @@ import { VerifyPage } from './verify';
 import {GalleryPage} from "./gallery";
 import {SearchPage} from "./search";
 import {SearchAllPage} from "./searchAll";
+import {SetSearchPage} from "./setSearch";
 
 declare function detectDivWidth();
 
@@ -15,10 +16,12 @@ declare function detectDivWidth();
 export class FunctionPage {
   handleFlag="";
   color="";
-  pictureOne: string = "assets/img/function/icon1.png";//用户默认图片1
+  pictureOne: string = "assets/img/function/icon6.png";//用户默认图片1
   pictureTwo: string = "assets/img/function/icon3.png";//用户默认图片2
-  pictureThree: string ="assets/img/function/icon2.png";//用户默认图片4
-  pictureFour: string = "assets/img/function/icon4.png";//用户默认图片3
+  pictureThree: string ="assets/img/function/icon5.png";//用户默认图片3
+  pictureFour: string = "assets/img/function/icon2.png";//用户默认图片4
+  pictureFive: string = "assets/img/function/icon1.png";//用户默认图片5
+  pictureSix: string = "assets/img/function/icon4.png";//用户默认图片6
 
   constructor(public navCtrl: NavController,
               public LoadCtrl:LoadingController,
@@ -34,9 +37,12 @@ export class FunctionPage {
     }else if(flag=="2"){
       this.navCtrl.push(VerifyPage);
     }else if(flag=="3"){
-      this.navCtrl.push(SearchPage);
-      // this.navCtrl.push(SearchAllPage);
+      this.navCtrl.push(SetSearchPage);
     }else if(flag=="4"){
+      this.navCtrl.push(SearchPage);
+    }else if(flag=="5"){
+      this.navCtrl.push(SearchAllPage);
+    }else if(flag=="6"){
       if(localStorage.logined=="true"){
         this.navCtrl.push(GalleryPage);
       }else{
@@ -49,5 +55,4 @@ export class FunctionPage {
 
     }
   }
-
 }

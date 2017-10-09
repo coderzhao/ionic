@@ -457,15 +457,24 @@ page-search {
     color: #68676C;
   }
   .fa_input{
-    width: 40%;
+    width: 83%;
+    height: 30px;
+    margin-left: 6%;
   }
   .fa_value{
     margin-left: 5%;
-    width: 12%;
-    height: 100%;
     color: white;
     text-align: center;
     border: 1px solid #79f0b4;
+  }
+  .fa_value input{
+    width: 100%;
+    height: 100%;
+    border: none;
+    padding:0 2px;
+    outline: none;
+    color: #484949;
+    //background-color: #79f0b4;
   }
 
 }

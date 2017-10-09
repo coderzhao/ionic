@@ -19,7 +19,7 @@
   <!--<ion-toolbar color="primary">-->
   <ion-navbar color="selfColor">
     <ion-title>
-      人脸搜索all
+      人脸回显
     </ion-title>
   </ion-navbar>
 </ion-header>
@@ -44,15 +44,15 @@
   </div>
 
 
-  <!--<div class="upload_url">-->
-    <!--<div class="upload_urlbox">-->
-      <!--<div class="url_btn">-->
-        <!--&lt;!&ndash;<input type="text" placeholder="请输入图片url" [(ngModel)]="picture.Url"/>&ndash;&gt;-->
-        <!--<ion-input style="height: 30px;margin-top: -11px;" type="text" placeholder="请输入图片url" [(ngModel)]="picture.Url" clearInput mode="ios"></ion-input>-->
-      <!--</div>-->
-      <!--<div class="url_detect" (click)="submitUrl()">搜索</div>-->
-    <!--</div>-->
-  <!--</div>-->
+  <div class="upload_url">
+    <div class="upload_urlbox">
+      <div class="url_btn">
+        <!--<input type="text" placeholder="请输入图片url" [(ngModel)]="picture.Url"/>-->
+        <ion-input style="height: 30px;margin-top: -11px;" type="text" placeholder="请输入图片url" [(ngModel)]="picture.Url" clearInput mode="ios"></ion-input>
+      </div>
+      <div class="url_detect" (click)="submitUrl()">搜索</div>
+    </div>
+  </div>
 </ion-content>
 </body>
 

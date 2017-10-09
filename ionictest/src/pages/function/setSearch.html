@@ -1,0 +1,106 @@
+<div id="test"></div>
+<!--弹出框-->
+<div class="pop-up1">
+  <div class="cancel_icon1"><img src="assets/img/verify/cancel.png" (click)="getPicture(0,1)"/></div>
+  <div class="pop_title">请选择您的上传方式</div>
+  <div class="pop_box">
+    <div class="shooting">
+      <div class="pop_icon"><img src="assets/img/verify/pop_icon1.png" (click)="getPicture(0,2)"/></div>
+      <div class="pop_text" (click)="getPicture(1,1)">拍摄上传</div>
+    </div>
+    <div class="shooting">
+      <div class="pop_icon"><img src="assets/img/verify/pop_icon2.png"/></div>
+      <div class="pop_text" (click)="getPicture(0,1)" >从图库选择</div>
+    </div>
+  </div>
+</div>
+<!--</div>-->
+<div class="pop-up2">
+  <div class="cancel_icon2"><img src="assets/img/verify/cancel.png"/></div>
+  <div class="pop_title">请选择您的上传方式</div>
+  <div class="pop_box">
+    <div class="shooting">
+      <div class="pop_icon"><img src="assets/img/verify/pop_icon1.png"/></div>
+      <div class="pop_text" (click)="getPicture(1,2)">拍摄上传</div>
+    </div>
+    <div class="shooting">
+      <div class="pop_icon"><img src="assets/img/verify/pop_icon2.png"/></div>
+      <div class="pop_text" (click)="getPicture(0,2)">从图库选择</div>
+    </div>
+  </div>
+</div>
+<ion-header>
+  <!--<ion-toolbar color="primary">-->
+  <ion-navbar color="selfColor">
+    <ion-title>
+      人脸集合
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content >
+  <ion-card>
+    <div id="picDiv1" float-left style="position: relative;width: 50%;" >
+      <img id="imgShow1" style="padding: 10px;border: 3px solid #3bdecd;" [src]="firstPicturePath" (click)="getPicture(0,1)"/>
+    </div>
+    <div id="picDiv2" float-left style="position: relative;width: 50%" >
+      <img id="imgShow2" style="padding: 10px;border:3px solid #3bdecd;" [src]="secondPicturePath" (click)="getPicture(0,2)"/>
+      <!--src="assets/img/verify/right_img.png"-->
+      <!--src="assets/img/1.png"-->
+    </div>
+    <div style="clear: both" class="img_text">个人照</div>
+    <div class="img_text">集体照</div>
+  </ion-card>
+
+  <div class="upload_box">
+    <div class="upload_minbox">
+      <div class="upload_text">个人照</div>
+      <button class="upload_btn1" (click)="click1()">上传图片</button>
+    </div>
+    <div class="upload_minbox">
+      <div class="upload_text">集体照</div>
+      <button class="upload_btn2" (click)="click2()">上传图片</button>
+    </div>
+  </div>
+  <div class="upload_url">
+    <div class="upload_urlbox">
+      <div class="url_text">个人照</div>
+      <div class="url_btn">
+        <!--<input type="text" placeholder="请输入图片url" [(ngModel)]="picture.firstUrl" />-->
+        <ion-input style="height: 30px;margin-top: -11px;" type="text" placeholder="请输入图片url" [(ngModel)]="picture.firstUrl" clearInput mode="ios"></ion-input>
+      </div>
+      <div class="url_detect1" (click)="submitUrl(1)">检测</div>
+    </div>
+  </div>
+  <div class="upload_url2">
+    <div class="upload_urlbox2">
+      <div class="url_text2">集体照</div>
+      <div class="url_btn2">
+        <!--<input type="text" placeholder="请输入图片url" [(ngModel)]="picture.secondUrl"/>-->
+        <ion-input style="height: 30px;margin-top: -11px;" type="text" placeholder="请输入图片url" [(ngModel)]="picture.secondUrl" clearInput mode="ios"></ion-input>
+      </div>
+      <div class="url_detect2" (click)="submitUrl(2)">检测</div>
+    </div>
+  </div>
+
+  <div class="faBox">
+    <div style="margin-left: 6%;" >设置阀值(%)：</div>
+    <div class="fa_input">
+      <div style="width: 80%;float: left;"> <ion-range [(ngModel)]="numValue" style="height: 30px;width: 100%;" ></ion-range></div>
+      <div class="fa_value" style="width:15%;height: 28px;float: left;margin-left: -3%;"><input id="confidence" type="text" value="{{numValue}}" (change)="valueChange()"/></div>
+    </div>
+  </div>
+  <div class="results_box" id="verifyResultBox" style="margin-top: 50px;">
+    <div class="results_title" id="verifyTitle1" (click)="resultclick()"><span><img id="resultImg" src="assets/img/right_icon.png" (click)="resultclick()"/></span>对比结果</div>
+    <div class="results_boxtext" id="verifyResultBoxText">
+      <p id="resultVerify"></p>
+    </div>
+  </div>
+  <div class="results_box" id="verifyResponseBox">
+    <div class="results_title" id="verifyTitle2" (click)="responseclick()"><span><img id="responseImg" src="assets/img/right_icon.png" (click)="responseclick()"/></span>ResponseJson</div>
+    <div class="response_boxtext" id="verifyResponseBoxText">
+      <textarea id="responseVerify" style="width: 95%;height: 200px;" ></textarea>
+    </div>
+  </div>
+</ion-content>
+

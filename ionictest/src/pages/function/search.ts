@@ -6,6 +6,7 @@ declare function disMiss(flag:any);
 declare function searchResultClick(flag:any);
 declare function searchResponseClick();
 declare function clearSearchResult();
+declare function getNumValue();
 import { Component } from '@angular/core';
 import {ViewController, ToastController, List} from 'ionic-angular';
 import {NativeService} from "../../providers/NativeService";
@@ -28,6 +29,7 @@ export class SearchPage {
   searchArray:Array<any>=[];//查找图库的数据集合
   Title:string="搜索结果";
   Result:string="";
+  numValue:number=50;
 
   constructor(private viewCtrl: ViewController,
               private toastCtrl:ToastController,
@@ -101,6 +103,7 @@ export class SearchPage {
     //base64 转换成二进制文件，封装到表单里进行提交
     let filedata =dataURItoBlob(this.picturePath);
     let formdata = new FormData();
+    formdata.append("threshold",""+this.numValue/100);
     formdata.append("n","4");
     formdata.append("photo", filedata);
     this.http.post(MY_URL + "customer/getDemoFace", formdata).map(res =>
@@ -159,6 +162,7 @@ export class SearchPage {
       this.searchArray=[];
       this.Title="搜索结果:";
       let formData = new FormData();
+      formData.append("threshold",""+this.numValue/100);
       formData.append("n","4");
       formData.append("photo", this.picture.Url);
       //传递app端登录用户的用户名
@@ -222,6 +226,20 @@ export class SearchPage {
   //responseJson点击事件
   responseclick(){
     searchResponseClick();
+  }
+
+  valueChange(){
+    let numValue=getNumValue();
+    if(numValue=="error"){
+      let toast = this.toastCtrl.create({
+        message: "请输入范围在0~100之间的阀值！",
+        duration: 2000
+      });
+      toast.present()
+      this.numValue=50;
+    }else{
+      this.numValue=numValue;
+    }
   }
 }
 export class Picture{

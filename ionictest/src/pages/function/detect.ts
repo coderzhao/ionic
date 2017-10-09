@@ -134,7 +134,7 @@ export class DetectPage {
         clearDetectResult();
         this.picturePath=this.picture.Url;
         let toast = this.toastCtrl.create({
-          message: "11获取图片人脸失败，请检查！",
+          message: "获取图片人脸失败，请检查！",
           duration: 2000
         });
         toast.present();
