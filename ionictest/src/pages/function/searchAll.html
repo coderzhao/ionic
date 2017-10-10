@@ -35,7 +35,7 @@
     <div margin-left="5%" >设置阀值(%)：</div>
     <div class="fa_input">
       <div style="width: 80%;float: left;"> <ion-range [(ngModel)]="numValue" style="height: 30px;width: 100%;" ></ion-range></div>
-      <div class="fa_value" style="width:15%;height: 28px;float: left;margin-left: -3%;"><input id="confidence" type="text" value="{{numValue}}" (change)="valueChange()"/></div>
+      <div class="fa_value" style="width:15%;height: 28px;float: left;margin-right: 3%;"><input id="confidence" type="text" value="{{numValue}}" (change)="valueChange()"/></div>
     </div>
   </div>
   </ion-card>
@@ -44,15 +44,15 @@
   </div>
 
 
-  <div class="upload_url">
-    <div class="upload_urlbox">
-      <div class="url_btn">
-        <!--<input type="text" placeholder="请输入图片url" [(ngModel)]="picture.Url"/>-->
-        <ion-input style="height: 30px;margin-top: -11px;" type="text" placeholder="请输入图片url" [(ngModel)]="picture.Url" clearInput mode="ios"></ion-input>
-      </div>
-      <div class="url_detect" (click)="submitUrl()">搜索</div>
-    </div>
-  </div>
+  <!--<div class="upload_url">-->
+    <!--<div class="upload_urlbox">-->
+      <!--<div class="url_btn">-->
+        <!--&lt;!&ndash;<input type="text" placeholder="请输入图片url" [(ngModel)]="picture.Url"/>&ndash;&gt;-->
+        <!--<ion-input style="height: 30px;margin-top: -11px;" type="text" placeholder="请输入图片url" [(ngModel)]="picture.Url" clearInput mode="ios"></ion-input>-->
+      <!--</div>-->
+      <!--<div class="url_detect" (click)="submitUrl()">搜索</div>-->
+    <!--</div>-->
+  <!--</div>-->
 </ion-content>
 </body>
 

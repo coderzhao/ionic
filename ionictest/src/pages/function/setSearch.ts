@@ -31,7 +31,7 @@ export class SetSearchPage {
   //secondPicturePath: string = 'data:image/jpeg;base64,' + IMG_BASE;
   secondPicturePath: string = 'http://yun.anytec.cn:8080/img/index/two/group5.png';
   imageBase64: string;//保存头像base64,用于上传
-  numValue:number=50;
+  numValue:number=70;
 
   constructor(private viewCtrl: ViewController,
               private toastCtrl:ToastController,

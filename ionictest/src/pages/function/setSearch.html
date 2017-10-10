@@ -87,17 +87,17 @@
     <div style="margin-left: 6%;" >设置阀值(%)：</div>
     <div class="fa_input">
       <div style="width: 80%;float: left;"> <ion-range [(ngModel)]="numValue" style="height: 30px;width: 100%;" ></ion-range></div>
-      <div class="fa_value" style="width:15%;height: 28px;float: left;margin-left: -3%;"><input id="confidence" type="text" value="{{numValue}}" (change)="valueChange()"/></div>
+      <div class="fa_value" style="width:15%;height: 28px;float: left;margin-right: 4%;"><input id="confidence" type="text" value="{{numValue}}" (change)="valueChange()"/></div>
     </div>
   </div>
   <div class="results_box" id="verifyResultBox" style="margin-top: 50px;">
-    <div class="results_title" id="verifyTitle1" (click)="resultclick()"><span><img id="resultImg" src="assets/img/right_icon.png" (click)="resultclick()"/></span>对比结果</div>
+    <div class="results_title" id="verifyTitle1" (click)="resultclick()"><span><img id="resultImg" src="assets/img/right_icon.png"/></span>对比结果</div>
     <div class="results_boxtext" id="verifyResultBoxText">
       <p id="resultVerify"></p>
     </div>
   </div>
   <div class="results_box" id="verifyResponseBox">
-    <div class="results_title" id="verifyTitle2" (click)="responseclick()"><span><img id="responseImg" src="assets/img/right_icon.png" (click)="responseclick()"/></span>ResponseJson</div>
+    <div class="results_title" id="verifyTitle2" (click)="responseclick()"><span><img id="responseImg" src="assets/img/right_icon.png"/></span>ResponseJson</div>
     <div class="response_boxtext" id="verifyResponseBoxText">
       <textarea id="responseVerify" style="width: 95%;height: 200px;" ></textarea>
     </div>

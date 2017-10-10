@@ -165,6 +165,9 @@ export class DetectPage {
   responseclick(){
     detectResponseClick();
   }
+  testfunc(){
+    alert(1);
+  }
 }
 export class Picture{
   Url:string;

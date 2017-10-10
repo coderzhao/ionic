@@ -77,14 +77,14 @@ export class SearchAllPage {
         if(localStorage.logined=="true"){
           let toast = this.toastCtrl.create({
             //message: "在个人库中没有找到相关图片！",
-            message: "在库中没有找到相关图片！",
+            message: "在库中没有找到相关人脸信息！",
             duration: 2000
           });
           toast.present();
         }else{
           let toast = this.toastCtrl.create({
             //message: "在试用库中没有找到相关图片！",
-            message: "在库中没有找到相关图片！",
+            message: "在库中没有找到相关人脸信息！",
             duration: 2000
           });
           toast.present();
@@ -135,14 +135,14 @@ export class SearchAllPage {
           if(localStorage.logined=="true"){
             let toast = this.toastCtrl.create({
               // message: "在个人库中没有找到相关图片！",
-              message: "在库中没有找到相关图片！",
+              message: "在库中没有找到相关人脸信息！",
               duration: 2000
             });
             toast.present();
           }else{
             let toast = this.toastCtrl.create({
               //message: "在试用库中没有找到相关图片！",
-              message: "在库中没有找到相关图片！",
+              message: "在库中没有找到相关人脸信息！",
               duration: 2000
             });
             toast.present();
