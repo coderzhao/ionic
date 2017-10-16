@@ -1,6 +1,3 @@
-/**
-  * Created by yanxiaojun617@163.com on 01-03.
-  */
  import {Injectable} from '@angular/core';
  import {ToastController, LoadingController} from 'ionic-angular';
  import {Camera} from 'ionic-native';

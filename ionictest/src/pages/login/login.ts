@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { NavController,LoadingController,ToastController,ModalController,ViewController} from 'ionic-angular';
-import { CROSS_URL } from "../../providers/Constants";
 import {MY_URL} from "../../providers/Constants";
 import {RegisterPage} from '../register/register';
 import {Http} from '@angular/http';
@@ -27,45 +26,6 @@ export class LoginPage {
 		password:localStorage.password,
 		Url:'images/1.jpg'
 	}
-
-	// loadDefault(){
-	// 	let loading = this.LoadCtrl.create({
-	// 		content:"加载中...",
-	// 		dismissOnPageChange:true,
-	// 		showBackdrop:true,
-	// 		cssClass:'danger'
-	// 	});
-	// 	loading.present();
-	// 	setTimeout(()=>{
-	// 	//验证密码是否为1，记录登录状态
-	// 	  if(this.userInfo.password =="1"){
-	// 		  localStorage.username = this.userInfo.username;
-	// 			localStorage.logined = "true";
-	// 			let data={
-	// 			  handleFlag:"注销",
-     //      color:"danger"
-     //    }
-	// 			this.viewCtrl.dismiss(data);
-	// 			let toast = this.toastCtrl.create({
-	// 								message: "登录成功！",
-	// 								duration: 2000
-	// 						});
-	// 			toast.present();
-	// 		}else{
-	// 		 let toast = this.toastCtrl.create({
-	// 							message: "密码不正确！",
-	// 							duration: 2000
-	// 					});
-	// 		 toast.present();
-	// 		}
-	// 	},1000);
-	// 	setTimeout(()=>{
-	// 		loading.dismiss();
-	// 	},1000);
-	// }
-
-
-
 
   loadDefault(){
   	let loading = this.LoadCtrl.create({
@@ -165,13 +125,3 @@ export class UserInfo{
   Url:string;
 }
 
-
-// this.http.get(CROSS_URL+"/customer/loginCheck?name="+this.userInfo.username+"&password="+this.userInfo.password).map(res =>
-//   res.json()).subscribe(data => {
-//   console.log(data);
-//   let toast = this.toastCtrl.create({
-//     message: data,
-//     duration: 2000
-//   });
-//   toast.present();
-// });

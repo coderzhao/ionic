@@ -1,16 +1,13 @@
 declare function handleData(url:any,data:any,flag:any);
 declare function dataURItoBlob(basestring:any);
-declare function showResult(dataobj:any);
 declare function upload1();
 declare function disMiss(flag:any);
 import { Component } from '@angular/core';
-import {ViewController, ToastController, List} from 'ionic-angular';
+import {ViewController, ToastController} from 'ionic-angular';
 import {NativeService} from "../../providers/NativeService";
-import {CROSS_URL} from "../../providers/Constants";
 import {MY_URL} from "../../providers/Constants";
 import {IMG_BASE} from "../../providers/Constants";
 import {Http} from '@angular/http';
-import { PhotoViewer } from 'ionic-native';
 
 @Component({
   selector: 'page-gallery',
@@ -21,7 +18,6 @@ export class GalleryPage {
   isChange: boolean = false;//头像是否改变标识
   picturePath: string = 'data:image/jpeg;base64,' + IMG_BASE;
   imageBase64: string;//保存头像base64,用于上传
-  base64Img1:string = 'data:image/jpeg;base64,' + IMG_BASE;
   searchArray:Array<any>=[];//查找图库的数据集合
   galleryArray:Array<any>=[];//我的图库数据集合
   Title:string="";
@@ -54,11 +50,6 @@ export class GalleryPage {
     }
   }
 
-  // private getPictureSuccess(imageBase64) {
-  //         this.isChange = true;
-  //         this.imageBase64 = <string>imageBase64;
-  //         this.picturePath = 'data:image/jpeg;base64,' + imageBase64;
-  //       }
   private test(){
     this.imageBase64 = <string>IMG_BASE;
     this.picturePath = 'data:image/jpeg;base64,' + IMG_BASE;

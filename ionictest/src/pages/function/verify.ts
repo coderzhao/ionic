@@ -11,7 +11,6 @@ declare function verifyResponseClick();
 import { Component } from '@angular/core';
 import {ViewController,ToastController} from 'ionic-angular';
 import {NativeService} from "../../providers/NativeService";
-import {CROSS_URL} from "../../providers/Constants";
 import {MY_URL} from "../../providers/Constants";
 import {IMG_BASE} from "../../providers/Constants";
 import {Http} from '@angular/http';
@@ -22,9 +21,6 @@ import 'rxjs/add/operator/map';
   templateUrl: 'verify.html'
 })
 export class VerifyPage {
-
-  //assets/img/verify/left_img.png
-  //assets/img/verify/right_img.png
   isChange: boolean = false;//头像是否改变标识
   firstPicturePath: string = 'data:image/jpeg;base64,' + IMG_BASE;
   secondPicturePath: string = 'data:image/jpeg;base64,' + IMG_BASE;
@@ -89,13 +85,8 @@ export class VerifyPage {
     this.http.post(MY_URL + "customer/verify-face", formdata).map(res =>
       res.json()).subscribe(data => {
       console.log(data);
-      let resultMessage=readResData(data,flag);
+      readResData(data,flag);
       verifyResultClick("result");
-      // let toast = this.toastCtrl.create({
-      //   message: resultMessage,
-      //   duration: 3000
-      // });
-      // toast.present();
     },erorr=> {
       console.log(erorr);
       errorVerifyResult();
@@ -144,13 +135,8 @@ export class VerifyPage {
       this.http.post(MY_URL + "customer/verify-face", formdata).map(res =>
         res.json()).subscribe(data => {
         console.log(data);
-        let resultMessage=readResData(data,flag);
+        readResData(data,flag);
         verifyResultClick("result");
-        // let toast = this.toastCtrl.create({
-        //   message: resultMessage,
-        //   duration: 3000
-        // });
-        // toast.present();
       },erorr=> {
         console.log(erorr);
         errorVerifyResult();

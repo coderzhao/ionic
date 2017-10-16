@@ -12,7 +12,7 @@ declare function getNumValue();
 import { Component } from '@angular/core';
 import {ViewController,ToastController} from 'ionic-angular';
 import {NativeService} from "../../providers/NativeService";
-import {CROSS_URL} from "../../providers/Constants";
+import {GROUP_IMG} from "../../providers/Pictrue";
 import {MY_URL} from "../../providers/Constants";
 import {IMG_BASE} from "../../providers/Constants";
 import {Http} from '@angular/http';
@@ -24,12 +24,10 @@ import 'rxjs/add/operator/map';
 })
 export class SetSearchPage {
 
-  //assets/img/verify/left_img.png
-  //assets/img/verify/right_img.png
   isChange: boolean = false;//头像是否改变标识
   firstPicturePath: string = 'data:image/jpeg;base64,' + IMG_BASE;
-  //secondPicturePath: string = 'data:image/jpeg;base64,' + IMG_BASE;
-  secondPicturePath: string = 'http://yun.anytec.cn:8080/img/index/two/group5.png';
+  secondPicturePath: string = 'data:image/jpeg;base64,' + GROUP_IMG;
+  //secondPicturePath: string = 'http://yun.anytec.cn:8080/img/index/two/group5.png';
   imageBase64: string;//保存头像base64,用于上传
   numValue:number=70;
 
@@ -101,7 +99,8 @@ export class SetSearchPage {
         this.http.post(MY_URL + "customer/verify-face", formdata).map(res =>
           res.json()).subscribe(data => {
           console.log(data);
-          let resultMessage=readResDataCol(data);
+          readResDataCol(data);
+          //let resultMessage=readResDataCol(data);
           setSearchResultClick("result");
           // let toast = this.toastCtrl.create({
           //   message: resultMessage,
@@ -124,22 +123,6 @@ export class SetSearchPage {
       console.log(erorr);
       errorVerifyResult();
     });
-
-
-    // this.http.post(MY_URL + "customer/verify-face", formdata).map(res =>
-    //   res.json()).subscribe(data => {
-    //   console.log(data);
-    //   let resultMessage=readResData(data,flag);
-    //   verifyResultClick("result");
-    //   // let toast = this.toastCtrl.create({
-    //   //   message: resultMessage,
-    //   //   duration: 3000
-    //   // });
-    //   // toast.present();
-    // },erorr=> {
-    //   console.log(erorr);
-    //   errorVerifyResult();
-    // });
   }
 
   checkUrl(flag){
@@ -193,7 +176,8 @@ export class SetSearchPage {
           this.http.post(MY_URL + "customer/verify-face", formdata).map(res =>
             res.json()).subscribe(data => {
             console.log(data);
-            let resultMessage=readResDataCol(data);
+            readResDataCol(data);
+            //let resultMessage=readResDataCol(data);
             setSearchResultClick("result");
           },erorr=> {
             console.log(erorr);

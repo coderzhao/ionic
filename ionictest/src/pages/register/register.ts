@@ -1,6 +1,4 @@
 import {Component} from '@angular/core';
-import { LoginPage } from '../login/login';
-import { CROSS_URL } from "../../providers/Constants";
 import {MY_URL} from "../../providers/Constants";
 import {NavController,ViewController,ToastController,LoadingController} from 'ionic-angular';
 import {Http} from '@angular/http';

@@ -10,11 +10,9 @@ declare function detectResponseClick();
 import {Component} from '@angular/core';
 import {ViewController, ToastController} from 'ionic-angular';
 import {NativeService} from "../../providers/NativeService";
-import {CROSS_URL} from "../../providers/Constants";
 import {MY_URL} from "../../providers/Constants";
 import {IMG_BASE} from "../../providers/Constants";
 import {Http} from '@angular/http';
-import { PhotoViewer } from 'ionic-native';
 import 'rxjs/add/operator/map';
 
 @Component({
@@ -73,7 +71,6 @@ export class DetectPage {
     }
     formData.append("photo", fileData);
 
-    //this.http.post(CROSS_URL + "customer/detect-face", formdata).map(res =>
       this.http.post(MY_URL + "customer/detect-face", formData).map(res =>
       res.json()).subscribe(data => {
       console.log(data);
@@ -113,7 +110,7 @@ export class DetectPage {
       for(let inx in attributeCheck){
         formData.append(attributeCheck[inx],"true");
       }
-      formData.append("photo", this.picture.Url);
+       formData.append("photo", this.picture.Url);
       this.http.post(MY_URL + "customer/detect-face", formData).map(res =>
         res.json()).subscribe(data => {
         console.log(data);
@@ -164,9 +161,6 @@ export class DetectPage {
   //responseJson点击事件
   responseclick(){
     detectResponseClick();
-  }
-  testfunc(){
-    alert(1);
   }
 }
 export class Picture{

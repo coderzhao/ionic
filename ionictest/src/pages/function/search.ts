@@ -8,13 +8,11 @@ declare function searchResponseClick();
 declare function clearSearchResult();
 declare function getNumValue();
 import { Component } from '@angular/core';
-import {ViewController, ToastController, List} from 'ionic-angular';
+import {ViewController, ToastController} from 'ionic-angular';
 import {NativeService} from "../../providers/NativeService";
-import {CROSS_URL} from "../../providers/Constants";
 import {MY_URL} from "../../providers/Constants";
 import {IMG_BASE} from "../../providers/Constants";
 import {Http} from '@angular/http';
-import { PhotoViewer } from 'ionic-native';
 
 @Component({
   selector: 'page-search',
@@ -25,10 +23,8 @@ export class SearchPage {
   isChange: boolean = false;//头像是否改变标识
   picturePath: string = 'data:image/jpeg;base64,' + IMG_BASE;
   imageBase64: string;//保存头像base64,用于上传
-  base64Img1:string = 'data:image/jpeg;base64,' + IMG_BASE;
   searchArray:Array<any>=[];//查找图库的数据集合
   Title:string="搜索结果";
-  Result:string="";
   numValue:number=50;
 
   constructor(private viewCtrl: ViewController,
@@ -61,40 +57,6 @@ export class SearchPage {
     }
   }
 
-  // private getPictureSuccess(imageBase64) {
-  //         this.isChange = true;
-  //         this.imageBase64 = <string>imageBase64;
-  //         this.picturePath = 'data:image/jpeg;base64,' + imageBase64;
-  //       }
-  private test(){
-    this.imageBase64 = <string>IMG_BASE;
-    this.picturePath = 'data:image/jpeg;base64,' + IMG_BASE;
-    let formdata = new FormData();
-    let filedata = dataURItoBlob(this.picturePath);
-    formdata.append("photo", filedata);
-    this.http.post(MY_URL + "customer/getDemoFace", formdata).map(res =>
-      res.json()).subscribe(data => {
-      console.log(data);
-      if(data==""){
-        let toast = this.toastCtrl.create({
-          message: "没有找到相关图片！",
-          duration: 2000
-        });
-        toast.present();
-      }else{
-        let dataObj=eval(data.results);
-        this.Title="图库中的搜索结果"
-        this.searchArray=showSearchResult(dataObj);
-      }
-    },erorr=> {
-      console.log(erorr);
-      let toast = this.toastCtrl.create({
-        message: "人脸搜索失败，请检查！",
-        duration: 2000
-      });
-      toast.present();
-    });
-  }
 
   private getPictureSuccess(imageBase64) {
     this.isChange = true;

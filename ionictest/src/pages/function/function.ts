@@ -1,13 +1,11 @@
 import { Component } from '@angular/core';
-import { NavController,LoadingController,ModalController,ToastController } from 'ionic-angular';
+import { NavController,ToastController } from 'ionic-angular';
 import { DetectPage } from './detect';
 import { VerifyPage } from './verify';
 import {GalleryPage} from "./gallery";
 import {SearchPage} from "./search";
 import {SearchAllPage} from "./searchAll";
 import {SetSearchPage} from "./setSearch";
-
-declare function detectDivWidth();
 
 @Component({
   selector: 'page-function',
@@ -24,8 +22,6 @@ export class FunctionPage {
   pictureSix: string = "assets/img/function/icon4.png";//用户默认图片6
 
   constructor(public navCtrl: NavController,
-              public LoadCtrl:LoadingController,
-              public modalCtrl:ModalController,
               public toastCtrl:ToastController) {
   }
 
